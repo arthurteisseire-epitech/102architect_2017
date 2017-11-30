@@ -3,9 +3,16 @@ from matrix import *
 from transformation import *
 from parse import *
 
-A = [[2, -5, 1], [0, 3, 4], [-7, 1, 8]]
-B = [[3, 2, 2], [-1, 3, 3], [2, 4, 4]]
-print(A)
-print(B)
-C = matrix_product(A, B)
-print(C)
+try:
+    change_h_to_H()
+    args = parse_all()
+    print_infos(args)
+    args.arg = list(reversed(args.arg))
+    xpos = coord_to_matrix(args.x, args.y)
+    xres = get_xres(args)
+    print("NGNGNGNGNG")
+    print(xres, matrix_product(xpos, xres))
+except:
+    print("Need at least x y args and one transformation")
+    exit(84)
+

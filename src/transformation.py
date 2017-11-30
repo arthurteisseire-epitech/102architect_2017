@@ -1,13 +1,15 @@
 from math import *
 def translation(i, j):
     T = [[1, 0, i],\
-        [O, 1, j],\
+        [0, 1, j],\
         [0, 0, 1]]
+    return(T)
 
 def homothethy(i, j):
     H = [[i, 0, 0],\
         [0, j, 0],\
         [0, 0, 1]]
+    return(H)
 
 def rotation(a):
     ca = cos(radians(a))
@@ -15,9 +17,12 @@ def rotation(a):
     R = [[ca, sa, 0],\
         [sa, ca, 0],\
         [0, 0, 1]]
+    return(R)
 
 def symmetry(a):
-    S = [[0, 0, 0],\
+    Sox = [[0, 0, 0],\
         [0, 0, 0],\
         [0, 0, 1]]
+    S = matrix_product(rotation(-a), matrix_product(Sox, rotation(a)))
+    return(S)
 

@@ -2,6 +2,7 @@
 
 import argparse
 import sys
+from transformation import *
 
 class add_to_list(argparse.Action):
     def __call__(self, parser, namespace, values, option_string=None):
@@ -39,12 +40,32 @@ def print_infos(args):
             print("Wrong args")
             exit(84)
 
-try:
-    change_h_to_H()
-    args = parse_all()
-    #print(args.x)
-    #print(args.y)
-    print_infos(args)
-except:
-    print("Need at least x y args and one transformation")
-    exit(84)
+def get_xres(args):
+    is_first_arg = True
+    for arg in args.arg:
+        if (arg[0] == 't'):
+            f = "translation"
+        elif (arg[0] == 'H'):
+            f = "homothethy"
+        elif (arg[0] == 'r'):
+            print("SOY FELES")
+            f = "rotation"
+        elif (arg[0] == 's'):
+            f = "symmetry"
+        
+        #print("F:{} LEN:{} ARG:{}".format(f, len(arg[1]), arg))
+        if (len(arg[1]) == 1):
+            arg_to_call = "arg[1][0]"
+        else:
+            arg_to_call = "arg[1][0], arg[1][1]"
+        
+        
+        
+        print("xres = {}({})".format(f, eval(arg_to_call)))
+        if (is_first_arg ):
+            xres = eval(f)(arg[1][0])
+        else:
+            matrix_product(xres, eval(f)(eval(arg_to_call)))
+
+        print("XRES:{}".format(xres))
+    return (xres)
