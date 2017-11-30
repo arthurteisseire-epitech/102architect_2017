@@ -23,11 +23,24 @@ def parse_all():
     args = parser.parse_args()
     return (args)
 
-def compute_args(args):
-    for arg in args.H:
-        print(arg)
+def print_infos(args):
+    for arg in args.args:
+        if (arg[0] == 't'):
+            print("Translation by the vector (%d, %d)" %(arg[1][0], arg[1][1]))
+        elif (arg[0] == 'H'):
+            print("Homothety by the ratios %d and %d" %(arg[1][0], arg[1][1]))
+        elif (arg[0] == 'r'):
+            print("Rotation at a %d degree angle" %(arg[1][0]))
+        elif (arg[0] == 's'):
+            print("Symmetry about an axis inclined with an angle of %d degrees" %(arg[1][0]))
+        else:
+            print("Wrong args")
+            exit(84)
 
-change_h_to_H()
-args = parse_all()
-print(args)
-#compute_args(args)
+try:
+    change_h_to_H()
+    args = parse_all()
+    print_infos(args)
+except:
+    print("Unknown error")
+    exit(84)
