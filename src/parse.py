@@ -5,9 +5,9 @@ import sys
 
 class put_in_order(argparse.Action):
     def __call__(self, parser, namespace, values, option_string=None):
-        if 'args' not in namespace:
-            namespace.args = []
-        namespace.args.append((self.dest, values))
+        if 'arg' not in namespace:
+            namespace.arg = []
+        namespace.arg.append((self.dest, values))
 
 def change_h_to_H():
     for i in range(len(sys.argv)):
@@ -24,7 +24,7 @@ def parse_all():
     return (args)
 
 def print_infos(args):
-    for arg in args.args:
+    for arg in args.arg:
         if (arg[0] == 't'):
             print("Translation by the vector (%d, %d)" %(arg[1][0], arg[1][1]))
         elif (arg[0] == 'H'):
