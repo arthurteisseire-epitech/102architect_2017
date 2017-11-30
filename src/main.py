@@ -1,9 +1,10 @@
 #!/usr/bin/python3.6
-from matrice import *
+from matrix import *
+#from transformation import *
 
-matrice_1 = [[2, -5, 1], [0, 3, 4], [-7, 1, 8]]
-matrice_2 = [[3], [-1], [2]]
-print(matrice_1)
-print(matrice_2)
-matrice_res = matrice_product(matrice_1, matrice_2)
-print(matrice_res)
+A = [[2, -5, 1], [0, 3, 4], [-7, 1, 8]]
+B = [[3, 2, 2], [-1, 3, 3], [2, 4, 4]]
+print(A)
+print(B)
+C = matrix_product(A, B)
+print(C)
