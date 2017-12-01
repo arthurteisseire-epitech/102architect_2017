@@ -6,18 +6,15 @@ from print_matrix import *
 from print_res import *
 from math import *
 
-#try:
-if (True):
+try:
     change_h_to_H()
     args = parse_all()
     print_infos(args)
-    #args.arg = list(reversed(args.arg))
     xpos = coord_to_matrix(args.x, args.y)
     xres = get_xres(args)
     print_matrix(xres)
     xpos = matrix_product(xres, xpos)
     print_res(args.x, args.y, xpos)
-'''except:
+except:
     print("Need at least x y args and one transformation")
     exit(84)
-'''
