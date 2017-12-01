@@ -1,0 +1,26 @@
+#!/usr/bin/python3.6
+from matrix import *
+from transformation import *
+from parse import *
+from print_matrix import *
+from math import *
+
+#try:
+if (True):
+    change_h_to_H()
+    args = parse_all()
+    print_infos(args)
+    #args.arg = list(reversed(args.arg))
+    xpos = coord_to_matrix(args.x, args.y)
+    xres = get_xres(args)
+    print("")
+    print_matrix(xpos)
+    print("")
+    print_matrix(xres)
+    print("")
+    xpos = matrix_product(xres, xpos)
+    print_matrix(xpos)
+'''except:
+    print("Need at least x y args and one transformation")
+    exit(84)
+'''
