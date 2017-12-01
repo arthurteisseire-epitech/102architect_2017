@@ -2,6 +2,7 @@
 
 import argparse
 import sys
+from matrix import *
 from transformation import *
 
 class add_to_list(argparse.Action):
@@ -39,21 +40,25 @@ def print_infos(args):
         else:
             print("Wrong args")
             exit(84)
+def gnn(nb):
+    print("GNNNNN {}".format(nb))
 
 def get_xres(args):
-    is_first_arg = True
+    is_first_arg = 1
+    #print("ARGS:{}".format(args))
     for arg in args.arg:
+        #print("ARG:{}".format(arg))
         if (arg[0] == 't'):
-            f = "translation"
+            f = translation
         elif (arg[0] == 'H'):
-            f = "homothethy"
+            f = homothethy
         elif (arg[0] == 'r'):
             print("SOY FELES")
-            f = "rotation"
+            f = rotation
         elif (arg[0] == 's'):
-            f = "symmetry"
+            f = symmetry
         
-        #print("F:{} LEN:{} ARG:{}".format(f, len(arg[1]), arg))
+        print("LEN:{} ARG:{} {}".format(len(arg[1]), arg[1][0] , arg[1][1]))
         if (len(arg[1]) == 1):
             arg_to_call = "arg[1][0]"
         else:
@@ -61,11 +66,11 @@ def get_xres(args):
         
         
         
-        print("xres = {}({})".format(f, eval(arg_to_call)))
-        if (is_first_arg ):
-            xres = eval(f)(arg[1][0])
+        #print("ARG1:{} ARG2:{}".format(eval(arg_to_call)))
+        if (is_first_arg == 1):
+            xres = f(arg[1][0], arg[1][1])
+            is_first_arg = 0
         else:
-            matrix_product(xres, eval(f)(eval(arg_to_call)))
-
-        print("XRES:{}".format(xres))
+            xnew = f(arg[1][0], arg[1][1])
+            xres = matrix_product(xres, xnew)
     return (xres)

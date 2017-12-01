@@ -3,6 +3,9 @@ def coord_to_matrix(x, y):
     return (matrix)
 
 def matrix_product(A, B):
+    if (len(A[0]) != len(B)):
+        print("INVALID MATRIX DIMENTION")
+    
     row_len = len(A)
     col_len = len(B[0])
     C = [[0 for i in range(col_len)] for i in range(row_len)]

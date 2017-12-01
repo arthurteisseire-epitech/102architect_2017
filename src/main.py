@@ -10,8 +10,10 @@ try:
     args.arg = list(reversed(args.arg))
     xpos = coord_to_matrix(args.x, args.y)
     xres = get_xres(args)
-    print("NGNGNGNGNG")
-    print(xres, matrix_product(xpos, xres))
+    print(xres)
+    print(xpos)
+    xpos = matrice_product(xres, xpos)
+    print(xpos)
 except:
     print("Need at least x y args and one transformation")
     exit(84)
